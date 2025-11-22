@@ -48,7 +48,7 @@ poemButton.onclick = () => { home.classList.add("hidden"); poem.classList.remove
 finishButton.onclick = () => { poem.classList.add("hidden"); finalScreen.classList.remove("hidden"); finalUnlocked = true; };
 
 // Coupons
-const coupons = ["Back Rub", "Foot Massage", "Breakfast in Bed", "Movie Night","One Chore of Your Choice","Coffee Made","Picnic Together","Compliment Jar","Tech Help","Grocery Helper"];
+const coupons = ["Back Rub", "Foot Massage", "Breakfast in Bed", "Movie Night","One Chore of Your Choice","Have to say you are right","Do whatever you ask (within reason)","Babysit Bella","Make dinner of your choice","Make Lunch of your choice","Fill Gas Tank","Quicky", "Anywhere, Anytime", "Pick show or Movie (No complaints)"];
 const couponList = document.getElementById("couponList");
 const selectedCoupons = new Set();
 couponButton.onclick = () => {
