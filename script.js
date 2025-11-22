@@ -17,6 +17,9 @@ const musicToggleHome = document.getElementById("musicToggleHome");
 const bgMusic = document.getElementById("bgMusic");
 let musicPlaying = false;
 
+// Track if Final Message unlocked
+let finalUnlocked = false;
+
 // Music toggle with fade-in
 [musicToggleIntro, musicToggleHome].forEach(btn => {
   btn.onclick = () => {
@@ -58,6 +61,7 @@ poemButton.onclick = () => {
 finishButton.onclick = () => {
   poem.classList.add("hidden");
   finalScreen.classList.remove("hidden");
+  finalUnlocked = true;
 };
 
 // Coupons
@@ -85,3 +89,14 @@ couponButton.onclick = () => {
     couponList.appendChild(btn);
   });
 };
+
+// Back buttons
+const backButtons = document.querySelectorAll(".back-btn");
+backButtons.forEach(btn => {
+  btn.onclick = () => {
+    [poem, finalScreen, coupon].forEach(screen => screen.classList.add("hidden"));
+    home.classList.remove("hidden");
+    // Only show final message if it was unlocked
+    if (!finalUnlocked) finalScreen.classList.add("hidden");
+  };
+});
