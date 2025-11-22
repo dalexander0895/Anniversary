@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anniversary App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- Intro Screen -->
+    <div id="intro" class="screen">
+      <div class="heart-container">
+        <div class="heart"></div>
+      </div>
+      <h1>Happy 2-Year Anniversary ❤️</h1>
+      <button id="enterButton" class="main-btn">Enter →</button>
+      <button id="musicToggle" class="music-btn">🔊</button>
+    </div>
+
+    <!-- Home Screen -->
+    <div id="home" class="screen hidden">
+      <h1>Happy 2-Year Anniversary ❤️</h1>
+      <button id="poemButton" class="main-btn">Read My Poem →</button>
+      <button id="couponButton" class="main-btn">Love Coupons →</button>
+      <button id="musicToggleHome" class="music-btn">🔊</button>
+    </div>
+
+    <!-- Poem Screen -->
+    <div id="poem" class="screen hidden">
+      <div class="poem-card">
+        <p id="poemText">
+          "I've Loved these Past 2 With You"<br><br>
+          They say time flies when you’re having fun, this is especially true when you’re with someone that makes you feel like you won.<br><br>
+          These 2 years have felt so natural that it’s hard to believe that it’s been that long...
+        </p>
+      </div>
+      <button id="finishButton" class="main-btn">Finish</button>
+    </div>
+
+    <!-- Final Message -->
+    <div id="final" class="screen hidden">
+      <div class="heart-container">
+        <div class="heart big"></div>
+      </div>
+      <h1>I Love You ❤️</h1>
+    </div>
+
+    <!-- Love Coupon Screen -->
+    <div id="coupon" class="screen hidden">
+      <h2>Love Coupons</h2>
+      <div id="couponList"></div>
+    </div>
+
+  </div>
+
+  <!-- Music -->
+  <audio id="bgMusic" loop src="assets/background.mp3"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
