@@ -7,158 +7,54 @@ body {
   overflow-x: hidden;
 }
 
-.screen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.hidden {
-  display: none;
-}
+.screen { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; }
+.hidden { display: none; }
 
 .main-btn {
-  margin: 15px;
-  padding: 12px 25px;
-  font-size: 1.3rem;
-  border-radius: 15px;
-  border: 2px solid rgba(255,255,255,0.5);
-  background-color: rgba(0,0,0,0.2);
-  color: white;
-  cursor: pointer;
+  margin: 15px; padding: 12px 25px; font-size: 1.3rem; border-radius: 15px;
+  border: 2px solid rgba(255,255,255,0.5); background-color: rgba(0,0,0,0.2); color: white; cursor: pointer;
   transition: all 0.2s ease;
 }
-.main-btn:hover {
-  background-color: rgba(255,255,255,0.1);
-  transform: scale(1.05);
-}
+.main-btn:hover { background-color: rgba(255,255,255,0.1); transform: scale(1.05); }
 
 .music-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: rgba(0,0,0,0.3);
-  padding: 8px 12px;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  cursor: pointer;
+  position: absolute; top: 20px; right: 20px;
+  background-color: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 10px; font-size: 1.1rem; cursor: pointer;
 }
 
-/* Heart Animation */
-.heart-container {
-  margin: 30px 0;
-}
-
+.heart-container { margin: 30px 0; }
 .heart {
-  width: 120px;
-  height: 120px;
-  background: linear-gradient(to bottom, #ff6ec7, #8e2de2);
-  position: relative;
-  transform: rotate(-45deg) scale(1);
-  animation: pulse 1.2s ease-in-out infinite;
+  width: 120px; height: 120px; background: linear-gradient(to bottom, #ff6ec7, #8e2de2);
+  position: relative; transform: rotate(-45deg) scale(1); animation: pulse 1.2s ease-in-out infinite;
 }
+.heart::before, .heart::after { content: ""; position: absolute; width: 120px; height: 120px; background: linear-gradient(to bottom, #ff6ec7, #8e2de2); border-radius: 50%; }
+.heart::before { top: -60px; left: 0; }
+.heart::after { left: 60px; top: 0; }
+.heart.big { width: 220px; height: 220px; }
+.heart.big::before, .heart.big::after { width: 220px; height: 220px; }
 
-.heart::before,
-.heart::after {
-  content: "";
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  background: linear-gradient(to bottom, #ff6ec7, #8e2de2);
-  border-radius: 50%;
-}
+@keyframes pulse { 0%,100% { transform: rotate(-45deg) scale(0.9); } 50% { transform: rotate(-45deg) scale(1.1); } }
 
-.heart::before {
-  top: -60px;
-  left: 0;
-}
-.heart::after {
-  left: 60px;
-  top: 0;
-}
-
-.heart.big {
-  width: 220px;
-  height: 220px;
-}
-.heart.big::before,
-.heart.big::after {
-  width: 220px;
-  height: 220px;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: rotate(-45deg) scale(0.9); }
-  50% { transform: rotate(-45deg) scale(1.1); }
-}
-
-/* Poem Card */
 .poem-card {
-  max-width: 90%;
-  max-height: 60vh;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: rgba(0,0,0,0.25);
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(255,182,193,0.6),
-              0 0 40px rgba(138,43,226,0.4);
-  overflow-y: auto;
-  font-family: 'Georgia', serif;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: white;
+  max-width: 90%; max-height: 60vh; margin: 20px auto; padding: 20px;
+  background-color: rgba(0,0,0,0.25); border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255,182,193,0.6), 0 0 40px rgba(138,43,226,0.4);
+  overflow-y: auto; font-family: 'Georgia', serif; font-size: 1.2rem; line-height: 1.6; color: white;
 }
+.poem-card::-webkit-scrollbar { width: 8px; }
+.poem-card::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 8px; }
+.poem-card::-webkit-scrollbar-thumb { background: rgba(255,182,193,0.6); border-radius: 8px; }
 
-/* Scrollbar styling */
-.poem-card::-webkit-scrollbar {
-  width: 8px;
-}
-
-.poem-card::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.05);
-  border-radius: 8px;
-}
-
-.poem-card::-webkit-scrollbar-thumb {
-  background: rgba(255,182,193,0.6);
-  border-radius: 8px;
-}
-
-/* Coupon buttons */
 #couponList button {
-  margin: 8px;
-  padding: 10px 15px;
-  font-size: 1rem;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s;
-  background-color: rgba(255,255,255,0.15);
-  color: white;
+  margin: 8px; padding: 10px 15px; font-size: 1rem; border-radius: 12px; border: none; cursor: pointer;
+  transition: 0.2s; background-color: rgba(255,255,255,0.15); color: white;
 }
-#couponList button:hover:not(:disabled) {
-  background-color: rgba(255,255,255,0.3);
-}
-#couponList button:disabled {
-  background-color: gray;
-  cursor: default;
-}
+#couponList button:hover:not(:disabled) { background-color: rgba(255,255,255,0.3); }
+#couponList button:disabled { background-color: gray; cursor: default; }
 
-/* Back Button */
 .back-btn {
-  margin: 15px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 12px;
-  border: 2px solid rgba(255,255,255,0.5);
-  background-color: rgba(0,0,0,0.2);
-  color: white;
-  cursor: pointer;
+  margin: 15px; padding: 10px 20px; font-size: 1rem; border-radius: 12px; border: 2px solid rgba(255,255,255,0.5);
+  background-color: rgba(0,0,0,0.2); color: white; cursor: pointer;
   transition: all 0.2s ease;
 }
-.back-btn:hover {
-  background-color: rgba(255,255,255,0.1);
-  transform: scale(1.05);
-}
+.back-btn:hover { background-color: rgba(255,255,255,0.1); transform: scale(1.05); }

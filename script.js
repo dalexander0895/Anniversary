@@ -1,3 +1,4 @@
+
 // Screens
 const intro = document.getElementById("intro");
 const home = document.getElementById("home");
@@ -20,72 +21,42 @@ let musicPlaying = false;
 // Track if Final Message unlocked
 let finalUnlocked = false;
 
-// Music toggle with fade-in
-[musicToggleIntro, musicToggleHome].forEach(btn => {
-  btn.onclick = () => {
-    if (!musicPlaying) {
-      bgMusic.volume = 0;
-      bgMusic.play();
-      musicPlaying = true;
-      btn.textContent = "🔊";
-      fadeIn(bgMusic);
-    } else {
-      bgMusic.pause();
-      musicPlaying = false;
-      btn.textContent = "🔇";
-    }
-  };
-});
-
+// Fade-in function
 function fadeIn(audio) {
+  audio.volume = 0; audio.play();
   let vol = 0;
   const interval = setInterval(() => {
-    if (vol < 1) {
-      vol += 0.03;
-      audio.volume = vol;
-    } else clearInterval(interval);
+    if (vol < 1) { vol += 0.03; audio.volume = vol; } else clearInterval(interval);
   }, 50);
 }
 
+// Music toggle
+[musicToggleIntro, musicToggleHome].forEach(btn => {
+  btn.onclick = () => {
+    if (!musicPlaying) { fadeIn(bgMusic); musicPlaying = true; btn.textContent = "🔊"; }
+    else { bgMusic.pause(); musicPlaying = false; btn.textContent = "🔇"; }
+  };
+});
+
 // Navigation
 enterButton.onclick = () => {
-  intro.classList.add("hidden");
-  home.classList.remove("hidden");
+  intro.classList.add("hidden"); home.classList.remove("hidden");
+  if (!musicPlaying) { fadeIn(bgMusic); musicPlaying = true; musicToggleIntro.textContent = "🔊"; musicToggleHome.textContent = "🔊"; }
 };
 
-poemButton.onclick = () => {
-  home.classList.add("hidden");
-  poem.classList.remove("hidden");
-};
-
-finishButton.onclick = () => {
-  poem.classList.add("hidden");
-  finalScreen.classList.remove("hidden");
-  finalUnlocked = true;
-};
+poemButton.onclick = () => { home.classList.add("hidden"); poem.classList.remove("hidden"); };
+finishButton.onclick = () => { poem.classList.add("hidden"); finalScreen.classList.remove("hidden"); finalUnlocked = true; };
 
 // Coupons
-const coupons = [
-  "Back Rub", "Foot Massage", "Breakfast in Bed", "Movie Night",
-  "One Chore of Your Choice", "Coffee Made", "Picnic Together",
-  "Compliment Jar", "Tech Help", "Grocery Helper"
-];
-
+const coupons = ["Back Rub", "Foot Massage", "Breakfast in Bed", "Movie Night","One Chore of Your Choice","Coffee Made","Picnic Together","Compliment Jar","Tech Help","Grocery Helper"];
 const couponList = document.getElementById("couponList");
 const selectedCoupons = new Set();
-
 couponButton.onclick = () => {
-  home.classList.add("hidden");
-  coupon.classList.remove("hidden");
-  couponList.innerHTML = "";
+  home.classList.add("hidden"); coupon.classList.remove("hidden"); couponList.innerHTML = "";
   coupons.forEach(c => {
-    const btn = document.createElement("button");
-    btn.textContent = c;
+    const btn = document.createElement("button"); btn.textContent = c;
     if (selectedCoupons.has(c)) btn.disabled = true;
-    btn.onclick = () => {
-      selectedCoupons.add(c);
-      btn.disabled = true;
-    };
+    btn.onclick = () => { selectedCoupons.add(c); btn.disabled = true; };
     couponList.appendChild(btn);
   });
 };
@@ -96,7 +67,6 @@ backButtons.forEach(btn => {
   btn.onclick = () => {
     [poem, finalScreen, coupon].forEach(screen => screen.classList.add("hidden"));
     home.classList.remove("hidden");
-    // Only show final message if it was unlocked
     if (!finalUnlocked) finalScreen.classList.add("hidden");
   };
 });
